@@ -5,16 +5,43 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.3.2/socket.io.js"></script>
         <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
         <script type="text/javascript" src="../static/scripts/node.js"></script>
+        <link rel="stylesheet" type="text/css" href="../static/styles/chat.css">
         
     </head>
     <body>
-        <h2>{{ username }} you have joined room {{ room }}</h2>
-        <div class="message"></div>
-        
-        <form class="message_form">
-            <input type="text" placeholder="Enter message" name="ms" class="input_message">
-            <button type="submit">Send</button>
-        </form>
+        <div class="sidebar">
+            <ul>
+                <button class="settings" id="settingbutimag"></button>
+                <button class="anno" name="anno" id="butimag"><h4 id="tx">Announ</h4></button>
+                <button class="users" name="personal" id="butimag"><h4 id="tx">Personal</h4></button>
+                <button class="groups" name="group" id="butimag"><h4 id="tx">Group</h4></button>
+                <button class="channels" name="channel" id="butimag"><h4 id="tx">Channel</h4></button>
+                <button class="challenge" name="challeng" id="butimag"><h4 id="tx">Challeng</h4></button>
+            </ul>
+        </div>
+
+        <div  class="search">
+            <div>
+                <input type="text" class="searchbar" placeholder="Search...">
+            </div>
+            <div class="searchls">
+            </div>
+        </div>
+
+        <div class="convoact">
+
+            <label class="chat">Bereket</label>
+
+            <div class="history">
+                <div class="messages"></div>
+            </div>
+
+            <div class="messagesend">
+                <form class="message">
+                    <input class="message" type="text" placeholder="Send Message Here">
+                </form>
+            </div>
+        </div>
         <script>
             let username = "{{ username }}";
             let room = "{{ room }}";
