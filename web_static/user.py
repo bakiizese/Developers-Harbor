@@ -6,7 +6,7 @@ import sqlalchemy
 from werkzeug.security import check_password_hash, generate_password_hash
 import uuid
 
-engine = create_engine('mysql+pymysql://sql6691386:8y7bD7Rg7P@sql6.freesqldatabase.com:3306/sql6691386')
+engine = create_engine('mysql+pymysql://Bereketzeselassi:alxmysql@Bereketzeselassie.mysql.pythonanywhere-services.com/Bereketzeselassi$realtime_db')
 
 Base = declarative_base()
 
