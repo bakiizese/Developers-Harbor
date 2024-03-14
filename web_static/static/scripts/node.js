@@ -32,13 +32,16 @@ socket = io.connect("http://127.0.0.1:5000")
 
         })
     })
-    
     let nav = '.convoact '+ rd +' .history .messages';
     socket.on('join_anno', function(data) {
-        $(nav).append(data.username + ' :- have joind this room<br>')
+        
     })
     socket.on('receive_ms', function(data) {
-        $(nav).append(data.username + '  :- ' + data.message + '<br>')
-    })
-    
+        let nm = $('.convoact '+ rd +' .messagesend .message button').attr('sname')
+        if (nm != data.username) {
+            $(nav).append('----------'+data.username + ':- ' + data.message + '<br>')
+        } else {
+            $(nav).append(data.username + '  :- ' + data.message + '<br>')
+        }   
+    }) 
 })

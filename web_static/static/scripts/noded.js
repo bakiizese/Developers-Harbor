@@ -70,6 +70,5 @@ $('document').ready(function() {
         $('.convoact .group').hide()
         $('.convoact .channel').show()
     })
-    
     });
 })
