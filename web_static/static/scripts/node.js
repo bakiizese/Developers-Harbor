@@ -39,7 +39,7 @@ socket = io.connect("http://127.0.0.1:5000")
     socket.on('receive_ms', function(data) {
         let nm = $('.convoact '+ rd +' .messagesend .message button').attr('sname')
         if (nm != data.username) {
-            $(nav).append('----------'+data.username + ':- ' + data.message + '<br>')
+            $(nav).append('&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;'+data.username + ':- ' + data.message + '<br>')
         } else {
             $(nav).append(data.username + '  :- ' + data.message + '<br>')
         }   

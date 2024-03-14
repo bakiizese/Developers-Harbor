@@ -1,0 +1,104 @@
+.intro {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+
+    height: 500px;
+    background-image: url('./page.png');
+
+    background-repeat: no-repeat;
+}
+.intro h1{
+    border: 1px solid black;
+    font-size: 50px;
+    margin-bottom: 10px;
+    width: fit-content;
+    margin-left: 50px;
+
+}
+.project{
+    margin-left: 50px;
+}
+.in p{
+    font-weight: bolder;
+}
+.but{
+    display: table-caption;
+   
+}
+.fiz {
+    background-image: url(fizz-buzz.png);
+    background-size: 490px;
+    background-repeat: no-repeat;
+    height: 500px;
+    width: 500px;
+    float: right;
+}
+.fiz2 {
+    background-image: url(page.png);
+    background-size: 490px;
+    background-repeat: no-repeat;
+    height: 500px;
+    width: 500px;
+    float: right;
+}
+.feature {
+    display: flex;
+    margin-top: 40px;
+    grid-gap: 15px;
+}
+.feature h1{
+    text-align: center;
+    width: fit-content;
+    font-size: 50px;
+    margin: 0px;
+}
+
+.feature h2 p{
+    margin: 0px;
+    font-size: 25px;
+    font-weight: bolder;
+    text-align: center;
+    text-decoration: underline;
+    margin-bottom: -20px;
+}
+.feature h2{
+    margin-top: -30px
+}
+body{
+   
+    background-image: url(page.png);
+    background-size: 2000%;
+    background-position: center;
+}
+article {
+    width: 80%; /* Adjust the width as needed */
+    margin: 0 auto; /* This centers the article horizontally */
+    text-align: justify; /* Justify the text to create even line lengths */
+    line-height: 1.5; /* Adjust the line height for better readability */
+  }
+  
+article h2 {
+    text-align: center; /* Center the headings within the article */
+  }
+.about h1{
+    text-align: center;
+    text-decoration: underline;
+    font-size: 50px;
+}
+
+.dev {
+    font-weight: bold;
+    margin: 20px;
+    margin-top: 100px;
+}
+
+.dev h2 {
+    font-size: 30px;
+    text-decoration: underline;
+    margin: 0px;
+}
+.dev p{
+    margin-left: 40px
+}
+  
