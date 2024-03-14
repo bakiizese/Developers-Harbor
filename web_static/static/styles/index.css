@@ -102,4 +102,10 @@ article h2 {
 .dev p{
     margin-left: 40px
 }
+.vid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
   
