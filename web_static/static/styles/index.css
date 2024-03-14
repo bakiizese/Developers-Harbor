@@ -4,7 +4,8 @@
     display: flex;
 
     height: 500px;
-    background-image: url('./page.png');
+    background-image: url('../images/page.png');
+
 
     background-repeat: no-repeat;
 }
@@ -27,7 +28,7 @@
    
 }
 .fiz {
-    background-image: url(fizz-buzz.png);
+    background-image: url('../images/fizz-buzz.png');
     background-size: 490px;
     background-repeat: no-repeat;
     height: 500px;
@@ -35,7 +36,7 @@
     float: right;
 }
 .fiz2 {
-    background-image: url(page.png);
+    background-image: url('../images/page.png');
     background-size: 490px;
     background-repeat: no-repeat;
     height: 500px;
@@ -67,7 +68,7 @@
 }
 body{
    
-    background-image: url(page.png);
+    background-image: url('../images/page.png');
     background-size: 2000%;
     background-position: center;
 }

@@ -15,11 +15,11 @@
             <h3 class="errmsg">{{ message }}</h3>
             <form class="form" method="post" action="/signup">
                 
-                <input type="text" placeholder="Username" name="username">
+                <input type="text" placeholder="Username" name="username" required minlength="2">
                 <br>
-                <input type="email" placeholder="Email" name="email">
+                <input type="email" placeholder="Email" name="email" required>
                 <br>
-                <input type="password" placeholder="Password" name="password">
+                <input type="password" placeholder="Password" name="password" required minlength="6">
                 <br>
                 <button class="submit" type="submit">Signup</button>
             </form>

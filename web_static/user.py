@@ -11,7 +11,7 @@ engine = create_engine('mysql+pymysql://Chatdb:chatdb_pwd@localhost/realtime_db'
 Base = declarative_base()
 
 class User(Base):
-    __tablename__ = 'users'
+    __tablename__ = 'user'
     id = Column(String(60), primary_key=True)
     username = Column(String(128), nullable=False, unique=True)
     email = Column(String(128), nullable=False)
