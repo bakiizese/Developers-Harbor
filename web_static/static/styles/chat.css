@@ -248,9 +248,10 @@ body, html{
     background-size: 57px;
     background-repeat: no-repeat;
     border: 0px solid black;
-    background-color:transparent;
+    background-color:#302f37;
     cursor: pointer;
     background-position-x: 10px;
+
 }
 .chatconvo:active {
     background-color: #302f37;
@@ -284,3 +285,4 @@ body, html{
 .convotext {
     text-align: center;
 }
+

@@ -40,8 +40,8 @@ $('document').ready(function() {
     <button type="submit">Send</button></form></div></div>'
 
 
-    $('.search .searchls').html(announ);
-    $('.sidebar ul .anno').css('background-color', '#3d3c44');
+    $('.search .searchls').html(group);
+    $('.sidebar ul .groups').css('background-color', '#3d3c44');
     $('.sidebar #butimag').on('click', function() {
     $('.sidebar #butimag').css('background-color', 'transparent')
     $(this).css('background-color', '#3d3c44')
@@ -58,7 +58,7 @@ $('document').ready(function() {
     $('.search .searchls').html(emp)
     }
     $('.convolist ul .personal .chatconvo').on('click', function() {
-    $('.convolist ul .personal .chatconvo').css('background-color', 'transparent')
+    ('.convolist ul .personal .chatconvo').css('background-color', 'transparent')
     $(this).css('background-color', '#302f37')
     var pname = $(this).attr('name');
     
@@ -72,6 +72,4 @@ $('document').ready(function() {
     })
     
     });
-    
-  
 })
