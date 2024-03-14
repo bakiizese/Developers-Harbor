@@ -7,7 +7,7 @@ from werkzeug.security import check_password_hash, generate_password_hash
 
 hostname = 'Bereketzeselassie.mysql.pythonanywhere-services.com'
 username = 'Bereketzeselassi'
-password = 'your_password'
+password = 'alxmysql'
 database_name = 'Bereketzeselassi$realtime_db'
 
 connection_string = f"mysql+pymysql://{username}:{password}@{hostname}/{database_name}"
