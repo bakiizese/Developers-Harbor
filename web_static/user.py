@@ -6,8 +6,13 @@ import sqlalchemy
 from werkzeug.security import check_password_hash, generate_password_hash
 import uuid
 
-engine = create_engine('mysql+pymysql://Bereketzeselassi:alxmysql@Bereketzeselassie.mysql.pythonanywhere-services.com/Bereketzeselassi$realtime_db')
+hostname = 'Bereketzeselassie.mysql.pythonanywhere-services.com'
+username = 'Bereketzeselassi'
+password = 'your_password'
+database_name = 'Bereketzeselassi$realtime_db'
 
+connection_string = f"mysql+pymysql://{username}:{password}@{hostname}/{database_name}"
+engine = create_engine(connection_string)
 Base = declarative_base()
 
 class User(Base):
