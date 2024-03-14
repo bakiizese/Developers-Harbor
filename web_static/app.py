@@ -14,23 +14,24 @@ login_manager.init_app(app)
 
 @app.route('/')
 def home():
-    return render_template('login.html')
+    return redirect(url_for('login'))
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
-        return redirect(url_for('home'))
+        return redirect(url_for('chat'))
     message = ''
     if request.method == 'POST':
         username = request.form.get('username')
         password_input = request.form.get('password')
         
         user = Chatdbs.get_user(username)
+        #print('\n\n\n\n{}\n\n\n\n\n\n\n\n'.format(username))
 
         if user and user.check_password(password_input):
             
             login_user(user)
-            return redirect(url_for('home'))
+            return redirect(url_for('chat', username=username))
         else:
             message = "failed to login"
 
@@ -39,7 +40,7 @@ def login():
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
     if current_user.is_authenticated:
-        return redirect(url_for('home'))
+        return redirect(url_for('chat'))
     
     message = ''
     if request.method == 'POST':
@@ -60,28 +61,24 @@ def signup():
 @login_required
 def logout():
     logout_user()
-    return redirect(url_for('home'))
+    return redirect(url_for('login'))
 
 
 @app.route('/chat')
 @login_required
 def chat():
     username = request.args.get('username')
-    room = request.args.get('room')
-
-    if room and username:
-        return render_template('chat.html', username=username, room=room)
-    else:
-        return redirect(url_for('home'))
+    if username:
+        return render_template('chat.html', username=username)
 
 @socketio.on('join_room')
 def handle_join_room(data):
-    join_room(data["room"])
-    socketio.emit('join_anno', data, room=data["room"])
+    join_room(data['room'])
+    socketio.emit('join_anno', data, room=data['room'])
 
 @socketio.on('send_ms')
 def handle_send_mes(data):
-    socketio.emit('receive_ms', data, room=data["room"])
+    socketio.emit('receive_ms', data, room=data['room'])
 
 
 @login_manager.user_loader

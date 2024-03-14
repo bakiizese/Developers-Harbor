@@ -1,0 +1,27 @@
+<body>
+        <h2>{{ username }} you have joined room {{ room }}</h2>
+        <div class="message"></div>
+        
+        <form class="message_form">
+            <input type="text" placeholder="Enter message" name="ms" class="input_message">
+            <button type="submit">Send</button>
+        </form>
+        <script>
+            let username = "{{ username }}";
+            let room = "{{ room }}";
+        </script>
+</body>
+
+
+            <div>
+                <label class="chat">Bereket</label>
+                <div class="history">
+                    <div class="messages"></div>
+                </div>
+                <div class="messagesend">
+                    <form class="message">
+                        <input class="input_message" type="text" placeholder="Send Message Here">
+                        <button type="submit">Send</button>
+                    </form>
+                </div>
+            </div>

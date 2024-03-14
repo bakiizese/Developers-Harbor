@@ -275,3 +275,12 @@ body, html{
 .personal {
     margin-bottom: 3px;
 }
+
+.convo {
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+.convotext {
+    text-align: center;
+}

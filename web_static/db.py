@@ -15,6 +15,7 @@ class Chatdbs:
     
     @staticmethod
     def new(username, email, password):
+        
         hpassword = generate_password_hash(password)
         add = User(id='10', username=username, email=email, password=hpassword)
         session = Session()
@@ -22,6 +23,7 @@ class Chatdbs:
         session.commit()
 
     def get_user(username):
+        
         session = Session()
         return session.query(User).filter_by(username=username).first()
 #password = 'passw'

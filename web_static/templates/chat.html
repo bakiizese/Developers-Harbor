@@ -4,6 +4,8 @@
         <title>Chat</title>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.3.2/socket.io.js"></script>
         <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        
+        <script type="text/javascript" src="../static/scripts/noded.js"></script>
         <script type="text/javascript" src="../static/scripts/node.js"></script>
         <link rel="stylesheet" type="text/css" href="../static/styles/chat.css">
         
@@ -25,23 +27,42 @@
                 <input type="text" class="searchbar" placeholder="Search...">
             </div>
             <div class="searchls">
+                <div class="convolist">
+                    <ul>
+                        <div class="personal">
+                            <button class="chatconvo try" name="group">
+                            <h4 id="name">Backend group</h4>
+                            <p id="messagen">help each other</p>
+                            </button>
+                        </div>
+                    </ul>
+                </div>
             </div>
         </div>
 
         <div class="convoact">
-
-            <label class="chat">Bereket</label>
-
-            <div class="history">
-                <div class="messages"></div>
+            <div name="group" class="group">
+                <label class="chat">Backend Group Chat</label>
+                <div class="history">
+                    <div class="messages"></div>
+                </div>
+                <div class="messagesend">
+                <form name='group' class="message">
+                    <input class="input_message" type="text" placeholder="Send Message Here">
+                    <button name="group" type="submit">Send</button></form>
+                </div>
             </div>
-
-            <div class="messagesend">
-                <form class="message">
-                    <input class="message" type="text" placeholder="Send Message Here">
-                </form>
+            <div name="channel" class="channel">
+                <label class="chat">Backend Channel Chat</label>
+                <div class="history"><div class="messages"></div>
+                </div><div class="messagesend">
+                <form name='channel' class="message">
+                    <input class="input_message" type="text" placeholder="Send Message Here">
+                    <button name="channel" type="submit">Send</button></form>
+                </div>
             </div>
         </div>
+
         <script>
             let username = "{{ username }}";
             let room = "{{ room }}";
