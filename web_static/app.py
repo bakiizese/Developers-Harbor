@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+'''The main app for handling message and routes'''
 from flask import Flask, url_for, redirect, request,  render_template
 from flask_socketio import SocketIO, join_room, leave_room
 from db import Chatdbs
@@ -14,10 +16,12 @@ login_manager.init_app(app)
 
 @app.route('/')
 def home():
+    '''Home route to redirect to login'''
     return redirect(url_for('login'))
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    '''login route'''
     if current_user.is_authenticated:
         return redirect(url_for('chat'))
     message = ''
@@ -26,7 +30,6 @@ def login():
         password_input = request.form.get('password')
         
         user = Chatdbs.get_user(username)
-        #print('\n\n\n\n{}\n\n\n\n\n\n\n\n'.format(username))
 
         if user and user.check_password(password_input):
             
@@ -39,6 +42,7 @@ def login():
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
+    '''signup route'''
     if current_user.is_authenticated:
         return redirect(url_for('chat'))
     
@@ -60,6 +64,7 @@ def signup():
 @app.route('/logout')
 @login_required
 def logout():
+    '''logout route'''
     logout_user()
     return redirect(url_for('login'))
 
@@ -67,22 +72,26 @@ def logout():
 @app.route('/chat')
 @login_required
 def chat():
+    '''main route to chat'''
     username = request.args.get('username')
     if username:
         return render_template('chat.html', username=username)
 
 @socketio.on('join_room')
 def handle_join_room(data):
+    '''to handle a join room and emits a message'''
     join_room(data['room'])
     socketio.emit('join_anno', data, room=data['room'])
 
 @socketio.on('send_ms')
 def handle_send_mes(data):
+    '''to handle send message and emits a message'''
     socketio.emit('receive_ms', data, room=data['room'])
 
 
 @login_manager.user_loader
 def load_user(username):
+    '''to load username from db'''
     return Chatdbs.get_user(username)
 
 if __name__ == "__main__":
