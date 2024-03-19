@@ -8,11 +8,12 @@ import uuid
 hostname = 'bekii.mysql.pythonanywhere-services.com'
 username = 'bekii'
 password = 'alxmysql'
-database_name = 'bekii$default' 
-connection_string = f"mysql+pymysql://{username}:{password}@{hostname}/{
-database_name}"
+database_name = 'bekii$default'
+connection_string = f"mysql+pymysql://{username}:\
+                     {password}@{hostname}/{database_name}"
 engine = create_engine(connection_string)
 Base = declarative_base()
+
 
 class User(Base):
     '''a Class for create and retriev user'''
@@ -28,29 +29,30 @@ class User(Base):
         self.username = username
         self.email = email
         self.password = password
-       
+
     @staticmethod
     def is_authenticated():
-    '''returns true if a user is authenticated'''
+        '''returns true if a user is authenticated'''
         return True
-    
+
     @staticmethod
     def is_active():
-    '''returns true if a user is active'''
+        '''returns true if a user is active'''
         return True
-    
+
     @staticmethod
     def is_anonymous():
-    '''returns true if a user is anonymous'''
+        '''returns true if a user is anonymous'''
         return False
-    
+
     def get_id(self):
-    '''returns username from db'''
+        '''returns username from db'''
         return self.username
 
     def check_password(self, password_input):
-    '''returns true if password is correct'''
+        '''returns true if password is correct'''
         return check_password_hash(self.password, password_input)
+
 
 Base.metadata.create_all(engine)
 Session = sessionmaker(bind=engine)

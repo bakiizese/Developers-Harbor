@@ -11,12 +11,15 @@ username = 'Bereketzeselassi'
 password = 'alxmysql'
 database_name = 'Bereketzeselassi$realtime_db'
 
-connection_string = f"mysql+pymysql://{username}:{password}@{hostname}/{database_name}"
+connection_string = f"mysql+pymysql://{username}:\
+                     {password}@{hostname}/{database_name}"
 engine = create_engine(connection_string)
 Base = declarative_base()
 
 Base.metadata.create_all(engine)
 Session = sessionmaker(bind=engine)
+
+
 class Chatdbs:
     '''Mysql Database'''
     @staticmethod

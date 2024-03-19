@@ -1,23 +1,25 @@
 #!/usr/bin/python3
-'''The main app for handling message and routes'''
+'''main flask app run with socketio'''
 from flask import Flask, url_for, redirect, request,  render_template
 from flask_socketio import SocketIO, join_room, leave_room
 from db import Chatdbs
-from flask_login import LoginManager, login_user, logout_user, login_required, current_user
+from flask_login import LoginManager, login_user
+from flask_login import logout_user, login_required, current_user
 from sqlalchemy.exc import IntegrityError
 
 app = Flask(__name__)
 app.secret_key = "my secret key"
 socketio = SocketIO(app)
-
 login_manager = LoginManager()
 login_manager.login_view = 'login'
 login_manager.init_app(app)
+
 
 @app.route('/')
 def home():
     '''Home route to redirect to login'''
     return redirect(url_for('login'))
+
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -28,11 +30,10 @@ def login():
     if request.method == 'POST':
         username = request.form.get('username')
         password_input = request.form.get('password')
-        
+
         user = Chatdbs.get_user(username)
 
         if user and user.check_password(password_input):
-            
             login_user(user)
             return redirect(url_for('chat', username=username))
         else:
@@ -40,12 +41,13 @@ def login():
 
     return render_template('login.html', message=message)
 
+
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
     '''signup route'''
     if current_user.is_authenticated:
         return redirect(url_for('chat'))
-    
+
     message = ''
     if request.method == 'POST':
         username = request.form.get('username')
@@ -58,7 +60,6 @@ def signup():
             message = 'user already exists'
 
     return render_template('signup.html', message=message)
-
 
 
 @app.route('/logout')
@@ -77,11 +78,13 @@ def chat():
     if username:
         return render_template('chat.html', username=username)
 
+
 @socketio.on('join_room')
 def handle_join_room(data):
     '''to handle a join room and emits a message'''
     join_room(data['room'])
     socketio.emit('join_anno', data, room=data['room'])
+
 
 @socketio.on('send_ms')
 def handle_send_mes(data):
@@ -93,6 +96,7 @@ def handle_send_mes(data):
 def load_user(username):
     '''to load username from db'''
     return Chatdbs.get_user(username)
+
 
 if __name__ == "__main__":
     socketio.run(app, host="0.0.0.0", port=5000, debug=1)
