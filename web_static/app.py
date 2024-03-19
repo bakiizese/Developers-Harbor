@@ -2,7 +2,7 @@
 '''main flask app run with socketio'''
 from flask import Flask, url_for, redirect, request,  render_template
 from flask_socketio import SocketIO, join_room, leave_room
-from db import Chatdbs
+from web_static.db import Chatdbs
 from flask_login import LoginManager, login_user
 from flask_login import logout_user, login_required, current_user
 from sqlalchemy.exc import IntegrityError
@@ -99,4 +99,4 @@ def load_user(username):
 
 
 if __name__ == "__main__":
-    socketio.run(app, host="0.0.0.0", port=5000, debug=1)
+    socketio.run(app, host="127.0.0.1", port=5006, debug=1)

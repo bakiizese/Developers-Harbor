@@ -1,3 +1,4 @@
+alert('inside')
 $('document').ready(function() {
 let room = 'group'
 var rd = ''
@@ -8,7 +9,7 @@ if (room == 'group') {
 }
     
     
-socket = io.connect("http://127.0.0.1:5000")
+socket = io.connect("http://127.0.0.1:5006")
     socket.on('connect', function() {
         socket.emit('join_room', {
             username: username,

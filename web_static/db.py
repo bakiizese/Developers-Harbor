@@ -3,7 +3,7 @@
 from sqlalchemy import create_engine, Column, Integer, String, ForeignKey
 from sqlalchemy.orm import relationship, sessionmaker, declarative_base
 import sqlalchemy
-from user import User
+from web_static.user import User
 from werkzeug.security import check_password_hash, generate_password_hash
 
 hostname = 'Bereketzeselassie.mysql.pythonanywhere-services.com'
@@ -13,7 +13,10 @@ database_name = 'Bereketzeselassi$realtime_db'
 
 connection_string = f"mysql+pymysql://{username}:\
                      {password}@{hostname}/{database_name}"
-engine = create_engine(connection_string)
+
+mysql = 'mysql+pymysql://Chatdb:chatdb_pwd@localhost/realtime_db'
+
+engine = create_engine(mysql)
 Base = declarative_base()
 
 Base.metadata.create_all(engine)

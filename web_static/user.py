@@ -11,7 +11,9 @@ password = 'alxmysql'
 database_name = 'bekii$default'
 connection_string = f"mysql+pymysql://{username}:\
                      {password}@{hostname}/{database_name}"
-engine = create_engine(connection_string)
+mysql = 'mysql+pymysql://Chatdb:chatdb_pwd@localhost/realtime_db'
+
+engine = create_engine(mysql)
 Base = declarative_base()
 
 
