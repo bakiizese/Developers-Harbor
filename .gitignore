@@ -1,0 +1,30 @@
+# Ignore temporary files
+*~
+~
+
+# Ignore compiled Python files
+*.pyc
+__pycache__
+__pycache__/*
+
+# Ignore environment-specific files
+*.env
+.env
+env
+
+*.venv
+.venv
+venv
+
+# Ignore IDE and editor files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.komodoproject
+*.komodotools
+*.komodopane
+
+# Ignore dependency directories
+node_modules/
+vendor/
