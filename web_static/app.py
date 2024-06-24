@@ -24,8 +24,8 @@ def home():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     '''login route'''
-    if current_user.is_authenticated:
-        return redirect(url_for('chat'))
+    # if current_user.is_authenticated:
+    #     return redirect(url_for('chat'))
     message = ''
     if request.method == 'POST':
         username = request.form.get('username')
@@ -77,6 +77,8 @@ def chat():
     username = request.args.get('username')
     if username:
         return render_template('chat.html', username=username)
+    else:
+        return redirect(url_for('login'))
 
 
 @socketio.on('join_room')
